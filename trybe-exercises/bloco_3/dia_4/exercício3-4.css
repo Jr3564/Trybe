@@ -1,32 +1,25 @@
-.navegação
-{    
+/* Classes*/
 
-    display: inline-block;
 
-}
-
-nav 
-{
-
-    border-bottom: 1px solid black;
+.menu
+{   
+    
+    list-style-type : none ;
 
 }
 
-.navegação ol
-{
+.referencias{}
+.imagemAnimal{}
+.videoDoAnimalEmAção{}
 
-    list-style-type: none;
-    padding-left: 0;
-}
+/* Informações Gerais do Animal*/
+#informaçõesGeraisDoAnimal{}
 
-.navegação a::after 
-{
-
-    display: inline-block;
-    color: #000;
-    content: '>';
-    font-size: 80%;
-    font-weight: bold;
-    padding: 0 3px;
-
-}
+/* Classificação cientifica */
+#classificaçãoCientifica{}
+/* Fatos interessantes */
+#fatosInteressantes{}
+#fato1{}
+#fato2{}
+/*referenciasBibliograficas*/
+#referenciasBibliograficas{}
