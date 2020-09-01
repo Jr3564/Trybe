@@ -150,53 +150,34 @@ n = 7
 *******
  */
 
- function piramideOca( n )
- {
-
+function piramideOca( n )
+{
 
     for( let i = 0 ; i < n ; i += 2 )
     {
 
-        let asteristicosArray = ""/* , espacos = "" */;
+        let asteristicosArray = "" , espacos = "" ;
 
-        /*for ( let j = 0 ; j < i ; j+=2 )
+        for( let j = n ; j > i ; j -= 2 )
         {
 
             espacos += " " ;
-            
-        } ;*/
-
-        for ( let l = i ; l > 0 ; l -= 4 )
-        {
-            
-            asteristicosArray += "*" ;
 
         } ;
 
-        for ( let m = 0 ; m < i ; m++ )
+        for ( let l = 0 ; l <= i; l += 1 )
         {
 
+            l == 0 || l == i || i == (n - 1) ? asteristicosArray += "*" : asteristicosArray += " " ;
 
-            
         } ;
 
-        asteristicosArray += "*" ;
-
-        /*  
-            *       0   *
-            * *     3   ***
-            *   *   5   *****
-            ******* 7   *******
-        */
-
-        console.log( /* espacos + */ asteristicosArray ) ;
+        console.log( espacos + asteristicosArray ) ;
 
     } ;
     
 
 } ;
-
- piramideOca( 7 ) ;
 
 /* 6- Faça um programa que diz se um número definido numa variável é primo ou não.
 
