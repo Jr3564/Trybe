@@ -1,5 +1,6 @@
 /*
-Faça cinco programas, um para cada operação aritmética básica. Seu programa deve ter duas variáveis, a e b, definidas no começo com os valores que serão operados. Faça programas para:
+Faça cinco programas, um para cada operação aritmética básica. Seu programa deve ter duas variáveis, a e b,
+ definidas no começo com os valores que serão operados. Faça programas para:
 */
 /* Módulo */
 function modulo( a , b )
@@ -73,7 +74,8 @@ function maiorDeTres( a , b , c )
 
 } ;
 
-/* Faça um programa que, dado um valor definido numa variável, retorne "positive" se esse valor for positivo, "negative" se for negativo e "zero" caso contrário.
+/* Faça um programa que, dado um valor definido numa variável, retorne "positive" se esse valor for positivo, "negative" 
+se for negativo e "zero" caso contrário.
  */
 
 function positivoNegativo( a ) 
@@ -197,7 +199,6 @@ function converteNota(porcentagemNota)
 
 };
 
-
 /* Bonus: use somente um if.
 Escreva um programa que defina três números em variáveis no 
 seu começo e retorne true se uma das três for par. Caso contrário, ele retorna false. */
@@ -224,7 +225,6 @@ seu começo e retorne true se uma das três for par. Caso contrário, ele retorn
 
  }
 
-
 /* Bonus: use somente um if.
 Escreva um programa que se inicie com dois valores em duas variáveis diferentes: 
 o custo de um produto e seu valor de venda. A partir dos valores, 
@@ -240,7 +240,8 @@ function custoValerDeVenda( custo , valorDeVenda )
 
 };
 
-/* Uma pessoa que trabalha de carteira assinada no Brasil tem descontados de seu salário bruto o INSS e o IR. Faça um programa que,
+/* Uma pessoa que trabalha de carteira assinada no Brasil tem descontados de seu salário bruto o INSS e o IR.
+ Faça um programa que,
 dado um salário bruto, calcule o líquido a ser recebido.
 A notação para um salário de R$1500,10, por exemplo, deve ser 1500.10. 
 
@@ -250,6 +251,7 @@ Salário bruto até R$ 1.556,94: alíquota de 8%
 Salário bruto de R$ 1.556,95 a R$ 2.594,92: alíquota de 9%
 Salário bruto de R$ 2.594,93 a R$ 5.189,82: alíquota de 11%
 Salário bruto acima de R$ 5.189,82: alíquota máxima de R$ 570,88
+
 IR
 Até R$ 1.903,98: isento de imposto de renda
 De R$ 1.903,99 a 2.826,65: alíquota de 7,5% e parcela de R$ 142,80 a deduzir do imposto
@@ -258,9 +260,12 @@ De R$ 3.751,06 a R$ 4.664,68: alíquota de 22,5% e parcela de R$ 636,13 a deduzi
 Acima de R$ 4.664,68: alíquota de 27,5% e parcela de R$ 869,36 a deduzir do imposto.
 
 Exemplo: Uma pessoa possui o salário bruto de R$ 3.000,00. O cálculo será:
-O salário bruto está entre R$ 2.594,93 e R$ 5.189,82, então sua alíquota para INSS é de 11%. O INSS será 11% de R$ 3.000, ou seja, R$ 330,00.
+O salário bruto está entre R$ 2.594,93 e R$ 5.189,82, então sua alíquota para INSS é de 11%. O INSS será 11% de R$ 3.000,
+ ou seja, R$ 330,00.
 Para descobrir o salário-base, subtraia do salário bruto a alíquota do INSS: R$ 3.000,00 - R$ 330,00 = R$ 2.670,00.
-Para pegar o valor do IR, temos um salário (já deduzido o INSS) entre R$ 1.903,99 e 2.826,65, sendo a alíquota, então, de 7.5%, com parcela de R$ 142,80 a deduzir do imposto. Assim, temos:
+Para pegar o valor do IR, temos um salário (já deduzido o INSS) entre R$ 1.903,99 e 2.826,65, s
+endo a alíquota, então, de 7.5%, 
+com parcela de R$ 142,80 a deduzir do imposto. Assim, temos:
 R$ 2.670,00: salário com INSS já deduzido;
 7.5%: alíquota de imposto de renda;
 R$ 142,00 parcela a se deduzir do imposto.
@@ -268,4 +273,19 @@ Fazendo a conta, temos: (7,5% de R$ 2.670,00) - R$ 142,80 = R$ 57,45
 O último cálculo para conseguir o salário líquido é R$ 2.670,00 - R$ 57,45 (salário-base - valor IR) = R$ 2.612,55.
 Resultado: R$ 2.612,55.
 Dica: que tal identificar as alíquotas com variáveis de nomes explicativos? */
+function saLiquido(saBruto)
+{
+    let sal = saBruto ;
 
+    if ( saBruto < 1556.94 ){ sal -= (sal * 0.8) }
+    else if ( saBruto > 1556.95 && saBruto < 2594.92 ){ sal -= (sal * 0.9) }
+    else if ( saBruto > 2594.93 && saBruto < 5189.82 ){ sal -= (sal * 0.11) }
+    else { saBruto -= 570.88 } ;
+    console.log(sal);
+    if ( sal > 1903.98 && sal < 2826.65 ){ sal -= sal*0.075 - 142.80 }
+    else if ( sal > 2826.66 && sal < 3751.05 ){ sal -= sal*0.15 - 354.80 }
+    else if ( sal > 3751.06  && sal < 4664.68 ){ sal -= sal*0.225 - 636.13 }
+    else if ( sal > 4664.68 ){ sal -= sal*0.275 - 869.36 } ;
+
+    return sal ;
+} ;
