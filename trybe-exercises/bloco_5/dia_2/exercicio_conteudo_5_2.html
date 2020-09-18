@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<div id="paiDoPai">
+  <div id="pai">
+    <div id="primeiroFilho"></div>
+    <div id="elementoOndeVoceEsta">
+      <div id="primeiroFilhoDoFilho"></div>
+      <div id="segundoEUltimoFilhoDoFilho"></div>
+    </div>
+    Atenção!
+    <div id="terceiroFilho"></div>
+    <div id="quartoEUltimoFilho"></div>
+  </div>
+</div>
+<script>
+/* Acesse o elemento elementoOndeVoceEsta. */
+console.log(elementoOndeVoceEsta);
+/* Acesse pai a partir de elementoOndeVoceEsta e adicione uma color a ele. */
+elementoOndeVoceEsta.parentNode.style.backgroundColor = "blue" ;
+/* Acesse o primeiroFilhoDoFilho e adicione um texto a ele. 
+Você se lembra dos vídeos da aula anterior, como fazer isso? */
+primeiroFilhoDoFilho.innerText = "Hello World!" ;
+/* Acesse o primeiroFilho a partir de pai. */
+console.log(document.getElementById("pai").firstChild);
+/* Agora acesse o primeiroFilho a partir de elementoOndeVoceEsta. */
+console.log(elementoOndeVoceEsta.previousElementSibling);
+/* Agora acesse o texto Atenção! a partir de 
+elementoOndeVoceEsta.*/
+console.log(elementoOndeVoceEsta.nextSibling);
+/* Agora acesse o terceiroFilho a partir de elementoOndeVoceEsta. */
+console.log(elementoOndeVoceEsta.nextElementSibling);
+/* Agora acesse o terceiroFilho a partir de pai. */
+console.log(pai.childNodes[5]);
+/* Crie um irmão para elementoOndeVoceEsta. */
+let irmaoMaisNovo = document.createElement("div");
+irmaoMaisNovo.id = "junior" ;
+document.getElementById("pai").appendChild(irmaoMaisNovo);
+/* Crie um filho para elementoOndeVoceEsta. */
+let filho = document.createElement("div");
+filho.id = "cacula" ;
+document.getElementById("elementoOndeVoceEsta").appendChild(filho);
+/* Crie um filho para primeiroFilhoDoFilho. */
+let neto = document.createElement("div");
+neto.id = "jj" ;
+document.getElementById("primeiroFilhoDoFilho").appendChild(neto);
+/* A partir desse filho criado, acesse terceiroFilho. */
+console.log(document.getElementById("jj").parentNode.parentNode.nextElementSibling);
+/* Remova todos os elementos da página, menos pai,
+elementoOndeVoceEsta e primeiroFilhoDoFilho.*/
+document.getElementById("pai").removeChild(terceiroFilho,quartoEUltimoFilho);
+</script>
+</body>
+</html>
