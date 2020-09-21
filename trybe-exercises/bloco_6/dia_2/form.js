@@ -35,7 +35,7 @@ let objects = [
       father: 'nameDiv',
       content : 'nome: '
     },
-    maxlength: 40,
+    maxlength: '40',
     father: 'nameLb'
   },
   {elementType : 'div' , id : 'emailDiv' , class : 'form-group' , father : 'personalDate' },
@@ -53,7 +53,7 @@ let objects = [
       father: 'emailDiv',
       content : 'email: '
     },
-    maxlength: 50,
+    maxlength: '50',
     father: 'emailLb'
   },
   {elementType : 'div' , id : 'CPFDiv' , class : 'form-group' , father : 'personalDate' },
@@ -71,7 +71,7 @@ let objects = [
       content : 'CPF: '
     },
     name: 'CPF',
-    maxlength: 11,
+    maxlength: '11',
     father: 'emailLb'
   },
   {elementType : 'div' , id : 'enderecoDiv' , class : 'form-group' , father : 'personalDate' },
@@ -89,7 +89,7 @@ let objects = [
       content : 'endereço: '
     },
     name: 'Endereco',
-    maxlength: 200,
+    maxlength: '200',
     father: 'enderecoLb'
   },
   {elementType : 'div' , id : 'cidadeDiv' , class : 'form-group' , father : 'personalDate' },
@@ -107,7 +107,7 @@ let objects = [
       content : 'cidade: '
     },
     name: 'Cidade',
-    maxlength: 40,
+    maxlength: '40',
     father: 'cidadeLb'
   },
   {elementType : 'div' , id : 'estadoDiv' , class : 'form-group' , father : 'personalDate' },
@@ -129,7 +129,7 @@ let objects = [
   {
     elementType: 'options',
     id: 'estadoOptions',
-    father: 'estadoSelect',
+    father: 'estadoSelect'
   },
   {elementType : 'div' , id : 'casaDiv' , class : 'form-check' , father : 'personalDate' },
   {
@@ -162,8 +162,8 @@ let objects = [
       father: 'apDiv'
     },
     father: 'personalDate'
-  },  {elementType : 'div' , id : 'lastExperience' , class : 'form-group' , father : 'formP' },
-
+  },  
+  {elementType : 'div' , id : 'lastExperience' , class : 'form-group' , father : 'formP' },
   {
     elementType: 'fieldset',
     id: 'lastJobs',
@@ -175,7 +175,7 @@ let objects = [
       father : "lastJobs"
     }
   },
-  {elementType : 'div' , id : 'resumeDiv' , class : 'form-group' , father : 'lastExperience' },
+  {elementType : 'div' , id : 'resumeDiv' , class : 'form-group' , father : 'lastJobs' },
   {
     elementType: 'textarea',
     required: 'required',
@@ -188,10 +188,10 @@ let objects = [
       father: 'resumeDiv',
       content : 'Resumo: '
     },
-    maxlength: 1000,
+    maxlength: '1000',
     father: 'resumeLb'
   },
-  {elementType : 'div' , id : 'cargoDiv' , class : 'form-group' , father : 'lastExperience' },
+  {elementType : 'div' , id : 'cargoDiv' , class : 'form-group' , father : 'lastJobs' },
   {
     elementType: 'input',
     type: 'text',
@@ -205,10 +205,10 @@ let objects = [
       father: 'cargoDiv',
       content : 'Cargo: '
     },
-    maxlength: 40,
+    maxlength: '40',
     father: 'cargoLb'
   },
-  {elementType : 'div' , id : 'requiredDiv' , class : 'form-group' , father : 'lastExperience' },
+  {elementType : 'div' , id : 'requiredDiv' , class : 'form-group' , father : 'lastJobs' },
   {
     elementType: 'input',
     type: 'text',
@@ -222,10 +222,10 @@ let objects = [
       class : 'form-check-label',
       content : 'Descrição: '
     },
-    maxlength: 500,
+    maxlength: '500',
     father: 'requiredLb'
   },
-  {elementType : 'div' , id : 'inicioDiv' , class : 'form-group' , father : 'lastExperience' },
+  {elementType : 'div' , id : 'inicioDiv' , class : 'form-group' , father : 'lastJobs' },
   {
     elementType: 'input',
     type: 'text',
@@ -239,7 +239,7 @@ let objects = [
       class : 'form-check-label',
       content : 'Data de inicio: '
     },
-    maxlength: 200,
+    maxlength: '200',
     father: 'dataDeInicioLb'
   },
   {elementType : 'div' , id : 'submitBtnDiv' , class : 'form-group' , father : 'formP' },
@@ -252,10 +252,10 @@ let objects = [
     label: {
       for: "submitBtn",
       class : 'form-check-label',
-      id: 'submitBtnDiv',
-      father: 'formP'
+      id: 'submitBtnLb',
+      father: 'submitBtnDiv'
     },
-    father: 'submitlb'
+    father: 'submitBtnLb'
   }
 ];
 let optionEstados = [
@@ -293,9 +293,7 @@ let optionEstados = [
   'Distrito Federal'
 ]
 
-//function createSmall() {};
-
-
+//Alerta criado para o caso de esquecer de adicionar o pai de algum elemento.
 function alertaDeOrfao(object) {
 
   if (object.father === undefined) {
@@ -304,6 +302,16 @@ function alertaDeOrfao(object) {
   }
   ;
 }
+
+/** É possível criar uma array de objects para criação de forma dinâmica com a função a seguir
+ * 
+ *chamar: createElements(ArrayDeObjetosDeElementos);
+ *
+ * entrada:
+ 
+ let array = [ {elemento}, {elemento}, {elemento}, etc... ] ;
+
+*/
 function createElements(elementsList) {
 
   let list = elementsList;
@@ -346,6 +354,21 @@ function createElements(elementsList) {
   };
 
 };
+
+/**chamar : createDiv(object);
+ * 
+ * objeto :
+
+let object = {
+    
+    elementType : 'div',
+    id : '' ,
+    class : '' ,
+    father : 'elemento pai'
+
+  };
+  
+*/
 function createDiv(object) {
 
   let element = document.createElement('div'),
@@ -372,6 +395,22 @@ function createDiv(object) {
   father.appendChild(element);
 
 };
+
+/** chamar : createForm(object);
+ * 
+ * entrada :
+
+ let object = {
+
+    elementType : 'form',
+    id : '' ,
+    class : '' ,
+    enctype : '' ,
+    method : '' ,
+    action : '' ,
+    father : 'elemento pai'
+ }
+*/
 function createForm(object) {
   
   let element = document.createElement('form'),
@@ -410,6 +449,19 @@ function createForm(object) {
   father.appendChild(element);
 
 };
+
+/** chamar : createLegend(object);
+ * 
+ * entrada :
+
+ let object = {
+
+    elementType : 'legend',
+    class : '' ,
+    content : 'Texto que aparecerá na legenda' ,
+    father : 'elemento pai'
+ }
+*/
 function createLegend(object) {
   
   let element = document.createElement('legend'),
@@ -433,9 +485,25 @@ function createLegend(object) {
   father.appendChild(element);
 
 };
+
+/** chamar : createLabel(object);
+ * 
+ * entrada:
+ 
+    label: {
+    
+      for: "",
+      id: "",
+      class : '',
+      father: 'Elemento pai',
+      content : ': '
+
+     }
+*/
 function createLabel(object) {
 
   let element = document.createElement('label');
+  alertaDeOrfao(object)
 
   for (let name in object) {
 
@@ -463,11 +531,33 @@ function createLabel(object) {
         break
     };
   };
+
   father.appendChild(element);
 
   return element;
 
 };
+
+/** chamar: createFieldset(object);
+ * 
+ * entrada:
+ 
+ let object = {
+
+    elementType: 'fieldset',
+    id: '',
+    father: '',
+    class : '',
+    
+    // É possível adicionar a legenda direto do objeto adicionando o objeto a seguir.
+    legend : {
+
+      class : '' ,
+      content : 'Texto que aparecerá na legenda' ,
+      father : 'elemento pai'
+
+ }
+ */
 function createFieldset(object) {
 
   let element = document.createElement('fieldset'),
@@ -499,6 +589,32 @@ function createFieldset(object) {
   if(object.legend != undefined ){createLegend(object.legend)};
 
 };
+
+/** chamar : createInput(object);
+ * 
+ * entrada
+ 
+   {
+    elementType: 'input',
+    type: '' ,
+    id: '' ,
+    required: '',
+    name: '',
+    class : '',
+
+    // É possível criar uma label por aqui adicionando o objeto a seguir.
+    label: {
+      for: "",
+      id: "",
+      class : '',
+      father: '',
+      content : 'Conteúdo que aparecerá escrito na label: : '
+    },
+    maxlength: ,
+    father: ''
+  },
+ 
+ */
 function createInput(object) {
 
   let element = document.createElement('input'),
@@ -548,6 +664,29 @@ function createInput(object) {
   father.appendChild(element);
 
 };
+
+/** chamar : createTextarea(object);
+ * 
+ * entrada:
+ {
+    elementType: 'textarea',
+    required: '',
+    id: '',
+    name: '',
+
+    // É possível criar uma label por aqui adicionando o objeto a seguir.
+    label: {
+      for: "",
+      id: '',
+      class : '',
+      father: '',
+      content : 'Conteúdo que aparecerá escrito na label '
+    },
+    maxlength: '',
+    father: ''
+  },
+ 
+ */
 function createTextarea(object) {
 
   let element = document.createElement('textarea'),
@@ -594,6 +733,31 @@ function createTextarea(object) {
   father.appendChild(element);
 
 };
+
+/** chamar : createSelect(object);
+ * 
+ * entrada:
+ 
+ let object = {
+
+    elementType: 'select',
+    id: '',
+    required: '',
+    class : '',
+    name: '',
+    
+    // É possível criar uma label por aqui adicionando o objeto a seguir.
+    label: {
+      for: "",
+      id: '',
+      class : '',
+      father: '',
+      content : 'Conteúdo que aparecerá escrito na label '
+    },
+    father: ''
+ }
+ 
+ */
 function createSelect(object) {
 
   let element = document.createElement('select'),
@@ -637,9 +801,17 @@ function createSelect(object) {
   createOption(optionEstados);
 
 };
-function createOption(optionEstados) {
 
-  let list = optionEstados,
+/** chamar : createOption;
+ * 
+ * entrada:
+  
+ let objeto = [ { elementType: 'options', id: '', father: '' }, 'opção1', 'opção2', 'opção3', 'etc...'};
+
+*/
+function createOption(object) {
+
+  let list = object,
     features = list[0],
     father = document.querySelector(`#${features.father}`);
 
@@ -677,6 +849,30 @@ function createOption(optionEstados) {
   };
 
 };
+
+/** chamar : createButton(object);
+ * 
+ * entrada:
+
+  let object =  {
+    elementType: 'button',
+    type: '',
+    content: 'Aparecerá escrito no botão',
+    id: '',
+    class : '',
+    
+    // É possível criar uma label por aqui adicionando o objeto a seguir.
+    label: {
+      for: "",
+      id: '',
+      class : '',
+      father: '',
+      content : 'Conteúdo que aparecerá escrito na label '
+    },
+    father: ''
+  }
+
+*/
 function creatButton(object) {
 
   let element = document.createElement('button'),
@@ -720,4 +916,6 @@ function creatButton(object) {
 
 };
 
-createElements(objects)
+createElements(objects);
+
+////function createSmall() {};

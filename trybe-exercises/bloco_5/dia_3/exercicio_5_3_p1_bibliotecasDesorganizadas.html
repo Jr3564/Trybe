@@ -20,18 +20,19 @@
 
   <script>
 
-    
+    let button = document.getElementById('lib-button');
+    button.addEventListener('click' , makeMadLibfunção);
 
+    function makeMadLibfunção(element){
+
+      let e = element.target;
+      console.log(e);
+  
+    };
   </script>
    
 </body>
 </html>
 
-<!--Comece com esta página da web, que tem vários elementos de entrada e um botão:
 
-Adicione uma tag de script ao final da página para seu código.
-Adicione um ouvinte de evento ao botão para que ele chame uma makeMadLibfunção quando clicado.
-Na makeMadLibfunção, recupere os valores atuais dos elementos de entrada do formulário, 
-crie uma história a partir deles e gere isso na div da história (como "Pamela realmente gosta de pepinos rosa.")
--->
 
