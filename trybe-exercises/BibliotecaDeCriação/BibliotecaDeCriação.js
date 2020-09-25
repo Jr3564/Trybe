@@ -298,63 +298,261 @@ function alertaDeOrfao(object) {
 
   if (object.father === undefined) {
 
-    alert(`${object.id} Precisa de um pai para ser criado!`)
+    console.log(`${object.id} Precisa de um pai para ser criado!`);
   }
   ;
 }
 
+let listCreation = [
+  [ { elementType : 'form' ,
+      amount : '1' ,
+      class : 'form-group',
+    },
+  {
+    action : "",
+    id : "formP",
+    enctype : "multipart/form-data",
+    method : "GET",
+    father : ""
+  }
+  ],
+  [ { elementType: 'fieldset',
+      amount : '2' ,
+      class : 'form-group', },
+    {
+    id: 'personalDate',
+    father: 'formP',
+    legend : {
+      content : "Dados pessoais" ,
+      class : 'col-form-label col-sm-2 pt-0',
+      father : "personalDate"
+    },
+    } ,
+    {
+    id: 'lastJobs',
+    father: 'formP',
+    legend : {
+      content : "Empregos Anteriores" ,
+      class : 'col-form-label col-sm-2 pt-0',
+      father : "lastJobs" }
+    }
+  ],
+  [ { elementType : 'div' ,
+      amount : '13' ,
+      class : 'form-group' } ,
+
+  { id : 'nameDiv' , father : "personalDate"},
+  { id : 'emailDiv' , father : "personalDate"},
+  { id : 'CPFDiv' , father : "personalDate"},
+  { id : 'enderecoDiv' , father : "personalDate"},
+  { id : 'cidadeDiv' , father : "personalDate"},
+  { id : 'estadoDiv' , father : "personalDate"},
+  { id : 'casaDiv' , father : "personalDate"},
+  { id : 'apDiv' , father : "personalDate"},
+
+  { id : 'resumeDiv' , class : 'form-group' , father : 'lastJobs' },
+  { id : 'cargoDiv' , class : 'form-group' , father : 'lastJobs' },
+  { id : 'requiredDiv' , class : 'form-group' , father : 'lastJobs'},
+  { id : 'inicioDiv' , class : 'form-group' , father : 'lastJobs'},
+  { id : 'submitBtnDiv' , class : 'form-group' , father : 'lastJobs'}
+  ],
+  [ { elementType: 'input',
+      amount : '10' ,
+      class : 'form-control' ,
+      required: 'required'
+    },
+      { id: 'nameText',
+        type: 'text',
+        maxlength: '40',
+        label: {
+          for: "nameText",
+          id: "nameLb",
+          class : 'form-check-label',
+          father: 'nameDiv',
+          content : 'nome: '},
+        father: 'nameLb',
+      },
+      { id: 'emailText',
+        type: 'text',
+        label: {
+          for: "emailText",
+          id: 'emailLb',
+          class : 'form-check-label',
+          father: 'emailDiv',
+          content : 'email: '},
+        father: 'emailLb'
+      },
+      { id: 'CPFText',
+        type: 'text',
+        maxlength: '11',
+        label: {
+          for: "CPFText",
+          id: 'CPFLb',
+          class : 'form-check-label',
+          father: 'CPFDiv',
+          content : 'CPF: '},
+        father: 'CPFLb'
+      },
+      { id: 'enderecoText',
+        type: 'text',        
+        label: {
+          for: "enderecoText",
+          id: 'enderecoLb',
+          class : 'form-check-label',
+          father: 'enderecoDiv',
+          content : 'endereço: '},
+        father: 'enderecoLb'
+      } ,
+      { id: 'cidadeText',
+        type: 'text',
+        maxlength: '40',
+        label: {
+          for: "cidadeText",
+          id: 'cidadeLb',
+          class : 'form-check-label',
+          father: 'cidadeDiv',
+          content : 'cidade: '},
+        father: 'cidadeLb'
+      },
+      { id: 'Apartamento',
+        type: 'radio',
+        label: {
+          for: "casa",
+          class : 'form-check-label',
+          content: "Apartamento",
+          id: 'casaLb',
+          father: 'casaDiv'},
+        father: 'casaLb'
+      },
+      { id: 'casa',
+        type: 'radio',
+        name: 'casaApartamentoName',
+        label: {
+          for: "apartamento",
+          content: "Casa",
+          id: 'casaLb',
+          class : 'form-check-label',
+          father: 'apDiv'},
+       father: 'personalDate'
+      },
+      { id: 'cargoId',
+        type: 'text',
+        name: 'cargoName',
+        maxlength: '40',
+        label: {
+          for: "cargoId",
+          id: 'cargoLb',
+          class : 'form-check-label',
+          father: 'cargoDiv',
+          content : 'Cargo: '},
+        father: 'cargoLb'
+      },
+      { id: 'descriptionId',
+        maxlength: '500',
+        label: {
+          for: "required",
+          id: 'requiredLb',
+          father: 'requiredDiv',
+          class : 'form-check-label',
+          content : 'Descrição: '},
+        father: 'requiredLb'
+      },
+      { id: 'dataDeInicio',
+        maxlength: '200',
+        label: {
+          for: "dataDeInicio",
+          id: 'dataDeInicioLb',
+          father: 'inicioDiv',
+          class : 'form-check-label',
+          content : 'Data de inicio: ',},
+        father: 'dataDeInicioLb'
+      }
+
+  ]
+
+]
+
+
 /** É possível criar uma array de objects para criação de forma dinâmica com a função a seguir
  * 
- *chamar: createElements(ArrayDeObjetosDeElementos);
+ *chamar: createMultipleElements(ArrayDeObjetosDeElementos);
  *
  * entrada:
- 
- let array = [ {elemento}, {elemento}, {elemento}, etc... ] ;
+ //array[0] contem a informação de quantidades e qual elemento será criado, nos seguintes ficam os elementos com seus detalhes.
+ let array = 
+ [ {
+    elementType : '' ,
+    amount : 'quantos elementos?' ,
+    class : 'opcional, pode ser posto a seguir',
+    type : 'opcional, pode ser posto a seguir'
+    }, 
+  {elemento}, 
+  {elemento}, 
+  etc... ] ;
 
 */
-function createElements(elementsList) {
+function createMultipleElements(elementsList) {
 
-  let list = elementsList;
+  let list = elementsList, 
+      features = list[0];
 
-  for (let i = 0; i < list.length; i++) {
+  for (let i = 1; i <= features.amount; i++) {
+    let element = document.createElement(features.elementType) ,
+        object = list[i] ;
 
-    let object = list[i];
+    for(let name in features){
 
-    switch (object.elementType) {
+      switch (name) {
+        
+        case 'classe' :
+          element.className = features[name];
+  
+        case 'type' :
+          element.type = features[name];
 
-      case 'form' :
-        createForm(object);
-        break
-      
-      case 'div':
-        createDiv(object);
+        case 'required':
+          element.required = object[name];
           break
 
+        case 'content':
+          element.innerText = object[name];
+          break
+
+      }
+    };
+    
+    switch (features.elementType) {
+
+      case 'div' :
+        createDiv(element , object);
+        break
+
+      case 'form' :
+        createForm(element , object);
+        break
+
       case 'fieldset':
-        createFieldset(object);
+        createFieldset(element , object);
         break
 
       case 'input':
-        createInput(object);
+        createInput(element , object);
         break
 
       case 'textarea':
-        createTextarea(object);
+        createTextarea(element , object);
         break
 
       case 'select':
-        createSelect(object);
+        createSelect(element , object);
         break
 
       case 'button':
-        creatButton(object);
+        creatButton(element , object);
         break
     };
-
   };
-
 };
-
 /**chamar : createDiv(object);
  * 
  * objeto :
@@ -369,12 +567,7 @@ let object = {
   };
   
 */
-function createDiv(object) {
-
-  let element = document.createElement('div'),
-    father = document.querySelector(`#${object.father}`);
-
-  alertaDeOrfao(object);
+function createDiv(element , object) {
 
   for (let name in object) {
 
@@ -388,11 +581,21 @@ function createDiv(object) {
         element.className = object[name];
         break
 
+      case 'father':
+        if(object[name] == "" || object[name] == undefined)
+        {
+          father = document.querySelector('body');
+          father.appendChild(element);
+        } else
+        { 
+          father = document.querySelector(`#${object.father}`);
+          father.appendChild(element);
+        };
+        break
+
     };
 
   };
-
-  father.appendChild(element);
 
 };
 
@@ -411,27 +614,14 @@ function createDiv(object) {
     father : 'elemento pai'
  }
 */
-function createForm(object) {
+function createForm(element , object) {
   
-  let element = document.createElement('form'),
-    father = document.querySelector(`#${object.father}`);
-
-  alertaDeOrfao(object);
-
   for (let name in object) {
 
     switch (name) {
-      
+
       case 'action':
         element.action = object[name];
-        break
-
-      case 'id':
-        element.id = object[name];
-        break
-
-      case 'class':
-        element.className = object[name];
         break
 
       case 'enctype':
@@ -441,6 +631,24 @@ function createForm(object) {
       case 'method':
         element.method = object[name];
           break
+
+      case 'id':
+        element.id = object[name];
+        break
+
+      case 'class':
+        element.className = object[name];
+        break
+
+      case 'father':
+        if(object[name] == "" || object[name] != undefined)
+        { 
+          father = document.querySelector('body');
+        } else
+        { 
+          father = object[name];
+        };
+        break
 
     };
 
@@ -467,8 +675,6 @@ function createLegend(object) {
   let element = document.createElement('legend'),
     father = document.querySelector(`#${object.father}`),
     content = object.content;
-
-  alertaDeOrfao(object);
 
   if(content !== undefined) {
     element.innerText = content;
@@ -503,7 +709,6 @@ function createLegend(object) {
 function createLabel(object) {
 
   let element = document.createElement('label');
-  alertaDeOrfao(object)
 
   for (let name in object) {
 
@@ -558,12 +763,7 @@ function createLabel(object) {
 
  }
  */
-function createFieldset(object) {
-
-  let element = document.createElement('fieldset'),
-    father = document.querySelector(`#${object.father}`);
-
-  alertaDeOrfao(object);
+function createFieldset(element , object) {
 
   for (let name in object) {
 
@@ -581,13 +781,24 @@ function createFieldset(object) {
         element.className = object[name];
         break
 
+      case 'father':
+        if(object[name] == "" || object[name] == undefined)
+        {
+          father = document.querySelector('body');
+          father.appendChild(element);
+        } else
+        { 
+          father = document.querySelector(`#${object.father}`);
+          father.appendChild(element);
+        };
+        break
+
+        case 'legend':
+          createLegend(object.legend);
+          break
+
     };
-
   };
-
-  father.appendChild(element);
-  if(object.legend != undefined ){createLegend(object.legend)};
-
 };
 
 /** chamar : createInput(object);
@@ -617,26 +828,9 @@ function createFieldset(object) {
  */
 function createInput(object) {
 
-  let element = document.createElement('input'),
-    father = document.querySelector(`#${object.father}`);
-
-  alertaDeOrfao(object);
-
   for (let name in object) {
 
     switch (name) {
-
-      case 'type':
-        element.type = object[name];
-        break
-
-      case 'id':
-        element.id = object[name];
-        break
-      
-      case 'class':
-        element.className = object[name];
-        break
 
       case 'required':
         element.required = object[name];
@@ -647,21 +841,45 @@ function createInput(object) {
         break
 
       case 'name':
+        console.log(name)
         element.name = object[name];
         break
 
       case 'label':
         father = createLabel(object[name]);
         break
+
       //não funcionou
       case 'maxlength':
         element.maxlength = object[name];
         break
 
-    };
+      case 'type':
+        element.type = object[name];
+        break
 
+      case 'id':
+        element.id = object[name];
+        break
+
+      case 'class':
+        element.className = object[name];
+        break
+
+      case 'father':
+        if(object[name] == "" || object[name] == undefined)
+        {
+          father = document.querySelector('body');
+          father.appendChild(element);
+        } else
+        { 
+          father = document.querySelector(`#${object.father}`);
+          father.appendChild(element);
+        };
+        break
+
+    };
   };
-  father.appendChild(element);
 
 };
 
@@ -915,5 +1133,13 @@ function creatButton(object) {
   father.appendChild(element);
 
 };
-createElements(objects);
+
+
+for( let i = 0 ; i < listCreation.length ; i++){ 
+
+  let item = listCreation[i];
+
+  createMultipleElements(item);
+
+};
 ////function createSmall() {};

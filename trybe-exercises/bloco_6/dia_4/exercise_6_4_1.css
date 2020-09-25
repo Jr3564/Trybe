@@ -1,0 +1,77 @@
+/*https://flexboxfroggy.com/
+
+Exercicio15*/
+
+#pond {
+  display: flex;
+}
+
+.red {
+order : -5;
+}
+
+/*Exercicio16*/
+
+#pond {
+  display: flex;
+  alinhar-itens: flex-start;
+}
+
+.amarelo {
+align-self : flex-end;
+}
+
+/*Exercicio17*/
+#pond {
+  display: flex;
+  alinhar-itens: flex-start;
+}
+
+.amarelo {
+order : 1 ;
+align-self : flex-end;
+}
+
+/*Exercicio18*/
+#pond {
+  display: flex;
+flex-wrap: wrap; 
+}
+
+/*Exercicio19*/
+
+#pond {
+  display: flex;
+flex-direction: column;
+flex-wrap: wrap
+}
+
+/*Exercicio20*/
+#pond {
+  display: flex;
+flex-flow: column wrap;
+}
+
+/*Exercicio21*/
+#pond {
+  display: flex;
+  flex-wrap: wrap;
+align-content : flex-start
+}
+
+/*Exercicio22*/
+#pond {
+  display: flex;
+  flex-wrap: wrap;
+align-content : flex-end
+}
+
+/*Exercicio23*/
+#pond {
+  display: flex;
+  flex-wrap: wrap;
+flex-direction : column-reverse;
+align-content : center;
+}
+/*Exercicio24*/
+
