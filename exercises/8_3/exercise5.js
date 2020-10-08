@@ -7,13 +7,18 @@ const names = [
   'Abeladerco', 'Adieidy',  'Alarucha',
 ];
 
-
-
 function containsA() {
-  // escreva seu código aqui
+  return names.reduce( (acc, current) => {
+    const array = current.toLowerCase().split('');
+    for(index of array) {
+      if( index === 'a') {
+        acc++;
+      }
+    }
+    return acc;
+  }, 0)
 }
-
-assert.deepEqual(containsA(), 20);
+assert.deepStrictEqual(containsA(), 20);
 
 /**Dada o array de nomes, retorne a quantidade de vezes em que aparecem a letra a maiúscula ou minúscula.
  */

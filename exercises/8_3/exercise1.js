@@ -9,9 +9,9 @@ const arrays = [
 
 
 function flatten() {
-  // escreva seu código aqui
+  return arrays.reduce((result,element) => result.concat(element),[] );
 }
 
-assert.deepEqual(flatten(), ["1", "2", "3", true, 4, 5, 6]);
+assert.deepStrictEqual(flatten(), ["1", "2", "3", true, 4, 5, 6]);
 
 /** Dada uma matriz de matrizes, transforme em uma única matriz.   */

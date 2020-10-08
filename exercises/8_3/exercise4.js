@@ -74,10 +74,10 @@ const expected_result = {
 };
 
 function longestNamedBook() {
-  // escreva seu código aqui
+  return books.reduce((result, element)=> element.name.length < result.name.length ? result : element);
 }
 
-assert.deepEqual(longestNamedBook(), expected_result);
+assert.deepStrictEqual(longestNamedBook(), expected_result);
 
 /** Encontre o livro com o maior nome.
  */
