@@ -1,0 +1,12 @@
+.container{
+  display: flex;
+  justify-content: space-around;
+}
+
+.pokeContainer{
+  display: flex;
+  border: 1px solid black;
+  align-items: center;
+  width: 500px;
+  flex-direction: column;
+}
