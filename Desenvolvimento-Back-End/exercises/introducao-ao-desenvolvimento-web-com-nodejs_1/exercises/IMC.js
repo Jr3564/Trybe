@@ -22,8 +22,7 @@ const imcCalculation = (weight, height) => (+weight / (+height * +height));
 const imcMessage = (weight, height) => {
   const imc = imcCalculation(weight, height).toFixed(2);
   const type = imcType(imc);
-  const message = `Seu IMC é ${imc}kg/m2.
-  O seu grau de IMC é: ${type}.`;
+  const message = `Seu IMC é ${imc}kg/m2.\nO seu grau de IMC é: ${type}.`;
   return message;
 };
 
