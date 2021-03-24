@@ -16,7 +16,7 @@ const imcType = (imc) => {
   }
 }
 
-const imcCalculation = (weight, height) => (+weight / (+height * +height));
+const imcCalculation = (weight, height) => (+weight / Math.pow(+height, 2));
 
 
 const imcMessage = (weight, height) => {
