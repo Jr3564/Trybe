@@ -1,0 +1,14 @@
+{
+  "name": "bonus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cauculator-fibonacciSequence.js",
+  "scripts": {
+    "start": "node cauculator-fibonacciSequence.js"
+  },
+  "author": "Rodolfo",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^8.0.0"
+  }
+}
