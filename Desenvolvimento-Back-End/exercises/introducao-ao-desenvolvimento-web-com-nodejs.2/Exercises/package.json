@@ -2,13 +2,14 @@
   "name": "exercises",
   "version": "1.0.0",
   "description": "",
-  "main": "exercise1.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node exercise1.js"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "inquirer": "^8.0.0"
+    "inquirer": "^8.0.0",
+    "node-fetch": "^2.6.1"
   }
 }

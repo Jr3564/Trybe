@@ -1,5 +1,5 @@
 const { prompt } =  require('inquirer');
-const calculator = require('./calculator');
+const { calculator } = require('../services');
 
 const questions = [
   {
@@ -19,11 +19,11 @@ const questions = [
   },
 ]
 
-prompt(questions).then((numbers) => {
+const exercise1 = () => prompt(questions).then((numbers) => {
   const { number1, number2, number3 } = numbers;
   calculator(+number1, +number2, +number3)
     .then(result => { console.log(`\nO resultado é: ${result}\n`) })
     .catch(error => { console.log(`\n Não é possível efetuar esse calculo: ${error}\n`) });
 });
 
-
+module.exports = exercise1;

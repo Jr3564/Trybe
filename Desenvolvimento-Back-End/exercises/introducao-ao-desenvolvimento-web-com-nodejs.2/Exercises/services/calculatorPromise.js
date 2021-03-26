@@ -13,15 +13,13 @@ const errors = {
 };
 
 const calculator = (...parameters) => new Promise((resolve, reject) => {
-
-    if(!isAllNumber(parameters))  {
-      reject(errors.typeError);
-    }
-    else if (calculationOfParameters(parameters) < 50) {
-      reject(errors.lowValueError);
-    }
+  if(!isAllNumber(parameters))  {
+    reject(errors.typeError);
+  }
+  else if (calculationOfParameters(parameters) < 50) {
+    reject(errors.lowValueError);
+  }
     return resolve(calculationOfParameters(parameters));
-
 });
 
 module.exports = calculator;
