@@ -4,7 +4,7 @@ async function printAllTo (fileName) {
   try {
     read(fileName, (file) => {
       const fileArr = JSON.parse(file);
-      console.log('- Imprimindo lista de nomes...\n');
+      console.log('- Procurando lista de nomes...\n');
       fileArr.forEach(({ id, name }) => {
         const message = `${id} - ${name} `;
         console.log(message);

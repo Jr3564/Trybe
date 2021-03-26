@@ -1,6 +1,6 @@
 const { prompt } =  require('inquirer');
 const { requestAPIToFile } = require('../services');
-const { printAllTo } = require('./exercise_4_services');
+const { printAllTo, getNameTo } = require('./exercise_4_services');
 
 const choices = {
   option_1: 'Imprimir todos os dados do arquivo ./simpsons.json com Id',
@@ -36,7 +36,7 @@ async function exercise4 () {
         break;
 
       case choices.option_2:
-        console.log('Em construção');
+        getNameTo(fileName);
         break;
 
       case choices.option_3:
