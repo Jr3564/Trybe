@@ -1,11 +1,11 @@
 const { prompt } =  require('inquirer');
 const { requestAPIToFile } = require('../services');
-const { printAllTo, getNameTo } = require('./exercise_4_services');
+const { printAllTo, getNameTo, removeItems } = require('./exercise_4_services');
 
 const choices = {
   option_1: 'Imprimir todos os dados do arquivo ./simpsons.json com Id',
-  option_2: 'Encontrar um Id',
-  option_3: 'Remover items',
+  option_2: 'Encontrar um ID',
+  option_3: 'Remover items pelos IDs',
   option_4: 'Criar um novo arquivo apartir do arquivo ./simpsons.json pelos Id',
   option_5: 'Adicionar um item à um arquivo',
   option_6: 'Substituir nome',
@@ -40,7 +40,7 @@ async function exercise4 () {
         break;
 
       case choices.option_3:
-        console.log('Em construção');
+        removeItems(fileName);
         break;
       
       case choices.option_4:
