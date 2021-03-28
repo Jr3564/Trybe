@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { Reader, ChronometerLogs } = require('./services');
+const { File, ChronometerLogs } = require('./services');
 
 function readFiles(files = []) {
   const timeOfReadCode = new ChronometerLogs('Tempo de total leitura:');
@@ -7,9 +7,9 @@ function readFiles(files = []) {
   try {
     files.forEach((fileName) => {
       const timeOfReadFile = new ChronometerLogs('Tempo de leitura do arquivo:');
-      const reader = new Reader(fileName);
+      const file = new File(fileName);
       timeOfReadFile.init();
-      reader.getFileSync();
+      file.read();
       console.log(`\nArquivo:${fileName}`);
       timeOfReadFile.stop();
       const { size } = fs.statSync(fileName);

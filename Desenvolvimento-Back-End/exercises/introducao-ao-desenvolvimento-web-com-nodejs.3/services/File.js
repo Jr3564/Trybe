@@ -1,12 +1,12 @@
 const fs = require('fs');
 
-class Reader {
+class File {
   constructor(fileName) {
     if (!fs.existsSync(fileName)) throw new Error('Arquivo não existe.');
     this.fileName = fileName;
   }
 
-  getFileSync() {
+  read() {
     try {
       const file = fs.readFileSync(this.fileName, 'utf8');
       return file;
@@ -15,7 +15,7 @@ class Reader {
     }
   }
 
-  AsyncTo(callback) {
+  asyncRead(callback) {
     fs.readFile(this.fileName, 'utf8', (err, file) => {
       if (err) {
         throw new Error(`Não foi possível ler o arquivo ${this.fileName}\n ${err}`);
@@ -27,4 +27,4 @@ class Reader {
   }
 }
 
-module.exports = Reader;
+module.exports = File;

@@ -1,4 +1,5 @@
 const ChronometerLogs = require('./ChronometerLogs');
-const Reader = require('./Reader');
+const Folder = require('./Folder');
+const File = require('./File');
 
-module.exports = { ChronometerLogs, Reader };
+module.exports = { ChronometerLogs, File, Folder };
